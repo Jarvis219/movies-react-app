@@ -1,12 +1,19 @@
-import { memo, useState } from 'react'
-import { Form } from 'react-router-dom'
+import { FormEvent, memo, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { ButtonPrimary } from '~/components/base/ButtonPrimary'
 
 const Search = () => {
+  const navigate = useNavigate()
   const [keyword, setKeyword] = useState('')
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    navigate(`/search/${keyword}`)
+  }
+
   return (
-    <Form
-      action={`/search/${keyword}`}
+    <form
+      onSubmit={handleSubmit}
       className='absolute inset-x-0 mx-auto bottom-8 lg:bottom-20 container opacity-85 hidden md:block'>
       <label className='mb-2 text-sm font-medium text-gray-900 sr-only'>Search</label>
       <div className='relative'>
@@ -36,7 +43,7 @@ const Search = () => {
         />
         <ButtonPrimary title='Search' type='submit' className='absolute right-2.5 bottom-2' />
       </div>
-    </Form>
+    </form>
   )
 }
 

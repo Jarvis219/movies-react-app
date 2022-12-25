@@ -32,7 +32,7 @@ const OneBlockCard = ({ id, src, title, voteAverage, releaseDate, overview }: IO
         <Heading4 className='mb-1 tracking-tight text-xl hover:text-teal-500 w-5/6 text-animate-hover truncate'>
           {title}
         </Heading4>
-        <div className='text-gray-700 text-sm'>{formatDate(releaseDate)}</div>
+        {releaseDate && <div className='text-gray-700 text-sm'>{formatDate(releaseDate)}</div>}
         <p className='my-3 font-normal text-gray-700 line-clamp-3'>{overview}</p>
       </div>
     </Link>

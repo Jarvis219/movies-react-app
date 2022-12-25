@@ -40,7 +40,7 @@ const TwoBlockCard = ({ id, image, title, releaseDate, voteAverage, overview }: 
               {voteAverage}
             </div>
           </div>
-          <div className='text-base text-gray-700'>{formatDate(releaseDate)}</div>
+          {releaseDate && <div className='text-base text-gray-700'>{formatDate(releaseDate)}</div>}
 
           <div className='text-gray-600 line-clamp-3 overflow-y-hidden'>
             <p className='hidden xl:block'>{overview}</p>
