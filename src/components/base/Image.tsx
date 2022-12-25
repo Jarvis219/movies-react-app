@@ -23,6 +23,7 @@ const Image = ({ src, alt, className = '', width = '128', height = '128', rounde
   return (
     <div className={`overflow-hidden mx-auto ${rounded ? 'sm:rounded-3xl' : ''}`} style={{ width: `${width}px` }}>
       <img
+        width={width}
         height={height}
         className={`transition duration-300 ease-in-out hover:scale-105 object-cover ${className}`}
         src={imageSrc}

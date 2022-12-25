@@ -70,6 +70,7 @@ const Menu = () => {
                 alt='This is logo'
                 className='ring-4 ring-gray-200 ring-opacity-20 mt-1'
                 width='32'
+                height='32'
               />
             </li>
             <li>
