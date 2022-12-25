@@ -4,7 +4,12 @@ import HomePage from '~/pages/Home'
 import MovieDetailPage from '~/pages/MovieDetail'
 import SearchPage from '~/pages/Search'
 
-export const routers = [
+interface IRouter {
+  path: string
+  element: JSX.Element
+}
+
+export const listRouter: IRouter[] = [
   {
     path: '/',
     element: (

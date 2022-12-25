@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Loading from '~/components/base/Loading'
-import { routers } from '~/routers'
+import { listRouter } from '~/router/listRouter'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <Suspense fallback={<Loading />}>
       <BrowserRouter>
         <Routes>
-          {routers.map((route, index) => (
+          {listRouter.map((route, index) => (
             <Route key={index} path={route.path} element={route.element} />
           ))}
         </Routes>
