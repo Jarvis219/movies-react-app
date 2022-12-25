@@ -1,0 +1,37 @@
+.container {
+  @apply fixed top-0 left-0 w-screen h-full z-50 bg-gray-200 bg-opacity-70;
+}
+.loader {
+  @apply flex justify-center items-center z-50;
+}
+
+.outer,
+.middle,
+.inner {
+  border: 3px solid transparent;
+  border-top-color: rgb(20 184 166);
+  border-right-color: rgb(20 184 166);
+  border-radius: 50%;
+  @apply absolute top-1/2 left-1/2;
+}
+
+.outer {
+  animation: spin 2s linear infinite;
+  @apply w-[3.5em] h-[3.5em] -ml-[1.75em] -mt-[1.75em];
+}
+
+.middle {
+  animation: spin 1.75s linear reverse infinite;
+  @apply w-[2.1em] h-[2.1em] -ml-[1.05em] -mt-[1.05em];
+}
+
+.inner {
+  animation: spin 1.5s linear infinite;
+  @apply w-[0.8em] h-[0.8em] -ml-[0.4em] -mt-[0.4em];
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
