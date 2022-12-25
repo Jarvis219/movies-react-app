@@ -1,6 +1,7 @@
 import { lazy, useEffect, useMemo, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import BoxEmptyData from '~/components/base/BoxEmptyData'
 import { MovieInfoSkeleton } from '~/components/movies/details/MovieInfo'
 import { fetchMovieDetail } from '~/services/movie'
 import { IMovieDetail } from '~/types/movies'
@@ -65,6 +66,8 @@ const MovieDetailPage = () => {
         : [],
     [movie]
   )
+
+  if (!movie && !loading) return <BoxEmptyData />
 
   return (
     <>

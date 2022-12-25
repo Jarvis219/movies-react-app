@@ -1,4 +1,5 @@
 import { lazy } from 'react'
+import BoxEmptyData from '~/components/base/BoxEmptyData'
 import { OneBlockCardSkeleton } from '~/components/cards/OneBlockCard'
 import { IPeople } from '~/types/people'
 import AppConfig from '../../../../AppConfig'
@@ -10,20 +11,23 @@ interface IPeopleProps {
   people: IPeople[]
 }
 
-const People = ({ loading, people }: IPeopleProps) => (
-  <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 place-content-center place-items-center gap-3 xl:gap-8'>
-    {loading
-      ? [...Array(AppConfig.ITEMS_PER_PAGE)].map((_, index) => <OneBlockCardSkeleton key={index} />)
-      : people &&
-        people.map((item) => (
-          <LayerCard
-            key={item.id}
-            src={`${import.meta.env.VITE_BASE_IMAGE_API}${item.profile_path}`}
-            title={item.name}
-            gender={item.gender}
-          />
-        ))}
-  </div>
-)
+const People = ({ loading, people }: IPeopleProps) => {
+  if (!people.length && !loading) return <BoxEmptyData />
+  return (
+    <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 place-content-center place-items-center gap-3 xl:gap-8'>
+      {loading
+        ? [...Array(AppConfig.ITEMS_PER_PAGE)].map((_, index) => <OneBlockCardSkeleton key={index} />)
+        : people &&
+          people.map((item) => (
+            <LayerCard
+              key={item.id}
+              src={`${import.meta.env.VITE_BASE_IMAGE_API}${item.profile_path}`}
+              title={item.name}
+              gender={item.gender}
+            />
+          ))}
+    </div>
+  )
+}
 
 export default People

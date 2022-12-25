@@ -5,12 +5,7 @@ const Search = lazy(() => import('~/components/header/Search'))
 
 const Banner = () => (
   <div className='relative'>
-    <img
-      loading='lazy'
-      src={'/assets/images/batman-hero.jpeg'}
-      alt='Banner image'
-      className='brightness-50 w-screen object-cover'
-    />
+    <img src={'/assets/images/batman-hero.jpeg'} alt='Banner image' className='brightness-50 w-screen object-cover' />
     <div className='absolute inset-x-0 mx-auto px-3 bottom-10 md:bottom-24 lg:bottom-40 container'>
       <Heading1 className='text-sky-500 font-black lg:!text-5xl'>Welcome</Heading1>
       <Heading3 className='text-gray-100 lg:!text-3xl'>
