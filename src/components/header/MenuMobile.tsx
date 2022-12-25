@@ -17,7 +17,7 @@ const MenuMobile = ({ menus, onClose }: IMenuMobileProps) => {
       <div className='absolute h-screen top-0 max-w-sm rounded-xl bg-white shadow-lg z-20 md:hidden'>
         <header className='rounded-bl-3xl mb-10 flex transform items-center bg-gradient-to-r from-teal-500 to-teal-600 py-8 px-6'>
           <Image
-            src='/assets/images/logo.png'
+            src='/assets/images/logo.webp'
             alt='This is logo'
             className='ring-4 ring-gray-200 ring-opacity-20'
             width='80'
