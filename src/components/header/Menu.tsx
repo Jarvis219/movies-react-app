@@ -87,7 +87,7 @@ const Menu = () => {
             {menus.slice(0, 7).map((menu) => (
               <li key={menu.id}>
                 <NavLink
-                  to={`/genre/${menu.id}`}
+                  to={`/search/${menu.name}`}
                   style={({ isActive }) => (isActive ? handleActive(menu.id) : undefined)}
                   className='relative block px-3 py-2 transition hover:text-teal-500'>
                   {menu.name}

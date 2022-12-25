@@ -64,7 +64,7 @@ const MenuMobile = ({ menus, onClose }: IMenuMobileProps) => {
           </li>
           {menus.slice(0, 7).map((menu) => (
             <li key={menu.id} className='text-md flex items-center py-4 text-gray-700 px-4'>
-              <NavLink to={`/genre/${menu.id}`} className='relative block px-3 py-2 transition hover:bg-teal-300'>
+              <NavLink to={`/search/${menu.name}`} className='relative block px-3 py-2 transition hover:bg-teal-300'>
                 {menu.name}
               </NavLink>
             </li>
