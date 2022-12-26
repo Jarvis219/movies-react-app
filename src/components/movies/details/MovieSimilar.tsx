@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { Heading2 } from '~/components/base/Heading'
 import { OneBlockCardSkeleton } from '~/components/cards/OneBlockCard'
+import GridLayout from '~/layout/GridLayout'
 import { fetchMovieSimilar } from '~/services/movie'
 import { IMovie } from '~/types/movies'
 import AppConfig from '../../../../AppConfig'
@@ -38,9 +39,9 @@ const MovieSimilar = () => {
 
   return (
     <>
-      <Heading2 className='xl:mt-0 mt-4'>Similar Movies</Heading2>
+      <Heading2 className='xl:mt-0 mt-4 mx-2'>Similar Movies</Heading2>
       <div className='xl:bg-gray-50 flex flex-wrap xl:flex-nowrap justify-center items-center xl:items-end xl:justify-start xl:flex-col gap-2 xl:h-screen xl:max-h-fit xl:overflow-y-scroll scroll-custom mt-2'>
-        <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-1 gap-3'>
+        <GridLayout>
           {loading
             ? [...Array(AppConfig.ITEMS_PER_PAGE)].map((_, index) => <OneBlockCardSkeleton key={index} />)
             : movie &&
@@ -55,7 +56,7 @@ const MovieSimilar = () => {
                   overview={item.overview}
                 />
               ))}
-        </div>
+        </GridLayout>
       </div>
     </>
   )

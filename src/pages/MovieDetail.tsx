@@ -72,7 +72,7 @@ const MovieDetailPage = () => {
   return (
     <>
       <Breadcrumb links={breadcrumbs} />
-      <div className='xl:grid grid-cols-3 gap-3 px-2'>
+      <div className='xl:grid grid-cols-3 gap-3'>
         <div className='col-span-2'>
           {loading ? <MovieInfoSkeleton /> : movie && <MovieInfo movie={movie} />}
           <p className='p-4 text-base'>{movie?.overview}</p>

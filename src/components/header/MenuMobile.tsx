@@ -1,5 +1,5 @@
-import { lazy, memo, useState } from 'react'
-import { Form, NavLink } from 'react-router-dom'
+import { FormEvent, lazy, memo, useState } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { IGenre } from '~/types/movies'
 
 const Image = lazy(() => import('~/components/base/Image'))
@@ -10,7 +10,12 @@ interface IMenuMobileProps {
 }
 
 const MenuMobile = ({ menus, onClose }: IMenuMobileProps) => {
+  const navigate = useNavigate()
   const [keyword, setKeyword] = useState('')
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    navigate(`/search/${keyword}`)
+  }
   return (
     <>
       <div className='w-screen h-screen bg-gray-400 opacity-70 absolute top-0 z-10' onClick={onClose} />
@@ -27,7 +32,7 @@ const MenuMobile = ({ menus, onClose }: IMenuMobileProps) => {
             <p className='text-sm tracking-wider text-gray-300'>Developer</p>
           </div>
         </header>
-        <Form action={`/search/${keyword}`} className='px-2 mb-3'>
+        <form onSubmit={handleSubmit} className='px-2 mb-3'>
           <label className='mb-2 text-sm font-medium text-gray-900 sr-only'>Search</label>
           <div className='relative'>
             <input
@@ -55,22 +60,25 @@ const MenuMobile = ({ menus, onClose }: IMenuMobileProps) => {
               </svg>
             </div>
           </div>
-        </Form>
+        </form>
         <ul className='relative pb-5 font-medium'>
           <li className='text-md flex items-center py-4 text-gray-700 bg-teal-300 px-4'>
-            <NavLink to='/' className='relative block px-3 py-2 transition'>
+            <NavLink to='/' className='relative block px-3 py-2 transition' onClick={onClose}>
               Home
             </NavLink>
           </li>
           {menus.slice(0, 7).map((menu) => (
             <li key={menu.id} className='text-md flex items-center py-4 text-gray-700 px-4'>
-              <NavLink to={`/search/${menu.name}`} className='relative block px-3 py-2 transition hover:bg-teal-300'>
+              <NavLink
+                onClick={onClose}
+                to={`/search/${menu.name}`}
+                className='relative block px-3 py-2 transition hover:bg-teal-300'>
                 {menu.name}
               </NavLink>
             </li>
           ))}
         </ul>
-        <span className='absolute left-1/2 bottom-10 text-gray-400' onClick={onClose}>
+        <span className='absolute left-1/2 bottom-6 text-gray-400' onClick={onClose}>
           <svg
             className='h-8 w-8'
             fill='none'

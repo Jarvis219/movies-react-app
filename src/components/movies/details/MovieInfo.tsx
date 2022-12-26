@@ -10,7 +10,7 @@ const LayoutListLabel = lazy(() => import('~/components/movies/LayoutListLabel')
 
 const MovieInfo = ({ movie }: { movie: IMovieDetail }) => {
   return (
-    <div className='grid grid-cols-1 lg:grid-cols-7 gap-1 xl:gap-10 md:p-4 shadow'>
+    <div className='grid grid-cols-1 lg:grid-cols-7 gap-1 xl:gap-10 md:p-4 shadow mx-1'>
       <div className='col-span-3 w-full'>
         <Image
           src={`${import.meta.env.VITE_BASE_IMAGE_API}${movie.poster_path}`}

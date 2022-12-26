@@ -1,6 +1,7 @@
 import { lazy } from 'react'
 import BoxEmptyData from '~/components/base/BoxEmptyData'
 import { OneBlockCardSkeleton } from '~/components/cards/OneBlockCard'
+import GridLayout from '~/layout/GridLayout'
 import { IMovie } from '~/types/movies'
 import AppConfig from '../../../../AppConfig'
 
@@ -14,7 +15,7 @@ interface IMoviesProps {
 const Movies = ({ loading, movies }: IMoviesProps) => {
   if (!movies.length && !loading) return <BoxEmptyData />
   return (
-    <div className='grid sm:grid-cols-2 xl:grid-cols-1 gap-3'>
+    <GridLayout>
       {loading
         ? [...Array(AppConfig.ITEMS_PER_PAGE)].map((_, index) => <OneBlockCardSkeleton key={index} />)
         : movies &&
@@ -29,7 +30,7 @@ const Movies = ({ loading, movies }: IMoviesProps) => {
               overview={movie.overview}
             />
           ))}
-    </div>
+    </GridLayout>
   )
 }
 export default Movies

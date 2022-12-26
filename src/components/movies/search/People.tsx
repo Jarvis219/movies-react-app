@@ -1,6 +1,7 @@
 import { lazy } from 'react'
 import BoxEmptyData from '~/components/base/BoxEmptyData'
 import { OneBlockCardSkeleton } from '~/components/cards/OneBlockCard'
+import GridLayout from '~/layout/GridLayout'
 import { IPeople } from '~/types/people'
 import AppConfig from '../../../../AppConfig'
 
@@ -14,7 +15,7 @@ interface IPeopleProps {
 const People = ({ loading, people }: IPeopleProps) => {
   if (!people.length && !loading) return <BoxEmptyData />
   return (
-    <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 place-content-center place-items-center gap-3 xl:gap-8'>
+    <GridLayout className='xl:!grid-cols-3 2xl:!grid-cols-4'>
       {loading
         ? [...Array(AppConfig.ITEMS_PER_PAGE)].map((_, index) => <OneBlockCardSkeleton key={index} />)
         : people &&
@@ -26,7 +27,7 @@ const People = ({ loading, people }: IPeopleProps) => {
               gender={item.gender}
             />
           ))}
-    </div>
+    </GridLayout>
   )
 }
 
