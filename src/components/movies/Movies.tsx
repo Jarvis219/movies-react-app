@@ -1,6 +1,7 @@
 import { lazy } from 'react'
 import BoxEmptyData from '~/components/base/BoxEmptyData'
 import { TwoBlockCardSkeleton } from '~/components/cards/TwoBlockCard'
+import GridLayout from '~/layout/GridLayout'
 import { IMovie } from '~/types/movies'
 import AppConfig from '../../../AppConfig'
 
@@ -9,13 +10,14 @@ const MovieCard = lazy(() => import('~/components/cards/TwoBlockCard'))
 interface IMoviesProps {
   movies: IMovie[]
   loading: boolean
+  listLayout: boolean
 }
 
-const Movies = ({ movies, loading }: IMoviesProps) => {
+const Movies = ({ movies, loading, listLayout }: IMoviesProps) => {
   if (!movies.length) return <BoxEmptyData />
 
   return (
-    <section className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 place-content-center place-items-center gap-3 mt-3'>
+    <GridLayout className={`mt-3 ${!listLayout && 'lg:grid-cols-3 xl:!grid-cols-2'}`} listLayout={listLayout}>
       {loading
         ? [...Array(AppConfig.ITEMS_PER_PAGE)].map((_, index) => <TwoBlockCardSkeleton key={index} />)
         : movies.map((movie) => (
@@ -29,7 +31,7 @@ const Movies = ({ movies, loading }: IMoviesProps) => {
               overview={movie.overview}
             />
           ))}
-    </section>
+    </GridLayout>
   )
 }
 

@@ -1,10 +1,13 @@
 import Header from '~/components/header/Index'
+import LayoutProvider from '~/context/Layout'
 
 const LayoutRouter = ({ children }: { children: JSX.Element }) => {
   return (
     <>
       <Header />
-      <div className='container mx-auto mt-8'>{children}</div>
+      <LayoutProvider>
+        <main className='container mx-auto mt-8'>{children}</main>
+      </LayoutProvider>
     </>
   )
 }

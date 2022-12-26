@@ -112,3 +112,8 @@ export interface IMovies {
 export interface IGenres {
   genres: IGenre[]
 }
+
+export enum ELayout {
+  Grid = 'Grid view',
+  List = 'List view',
+}

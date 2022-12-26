@@ -39,7 +39,9 @@ const MovieSimilar = () => {
 
   return (
     <>
-      <Heading2 className='xl:mt-0 mt-4 mx-2'>Similar Movies</Heading2>
+      <div className='flex justify-between mt-4 mx-2 xl:mt-0'>
+        <Heading2>Similar Movies</Heading2>
+      </div>
       <div className='xl:bg-gray-50 flex flex-wrap xl:flex-nowrap justify-center items-center xl:items-end xl:justify-start xl:flex-col gap-2 xl:h-screen xl:max-h-fit xl:overflow-y-scroll scroll-custom mt-2'>
         <GridLayout>
           {loading

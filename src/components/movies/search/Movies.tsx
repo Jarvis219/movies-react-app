@@ -10,12 +10,13 @@ const MovieCardSimilar = lazy(() => import('~/components/cards/OneBlockCard'))
 interface IMoviesProps {
   loading: boolean
   movies: IMovie[]
+  listLayout: boolean
 }
 
-const Movies = ({ loading, movies }: IMoviesProps) => {
+const Movies = ({ loading, movies, listLayout }: IMoviesProps) => {
   if (!movies.length && !loading) return <BoxEmptyData />
   return (
-    <GridLayout>
+    <GridLayout className={listLayout ? '' : 'xl:!grid-cols-2'} listLayout={listLayout}>
       {loading
         ? [...Array(AppConfig.ITEMS_PER_PAGE)].map((_, index) => <OneBlockCardSkeleton key={index} />)
         : movies &&

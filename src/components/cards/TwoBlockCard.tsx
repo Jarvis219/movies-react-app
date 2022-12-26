@@ -25,7 +25,7 @@ const TwoBlockCard = ({ id, image, title, releaseDate, voteAverage, overview }: 
             width='230'
             rounded
           />
-          <div className='bg-yellow-400 font-bold rounded-xl p-2 block xl:hidden w-10 absolute top-3 left-5'>
+          <div className='bg-yellow-400 font-bold rounded-xl p-2 block xl:hidden w-10 absolute top-3 left-6'>
             {voteAverage}
           </div>
         </div>

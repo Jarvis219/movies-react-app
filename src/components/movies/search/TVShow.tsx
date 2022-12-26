@@ -10,13 +10,14 @@ const MovieCardSimilar = lazy(() => import('~/components/cards/OneBlockCard'))
 interface ITVShowProps {
   loading: boolean
   tvShows: ITVShow[]
+  listLayout: boolean
 }
 
-const TVShow = ({ loading, tvShows }: ITVShowProps) => {
+const TVShow = ({ loading, tvShows, listLayout }: ITVShowProps) => {
   if (!tvShows.length && !loading) return <BoxEmptyData />
 
   return (
-    <GridLayout>
+    <GridLayout className={listLayout ? '' : 'xl:!grid-cols-2'} listLayout={listLayout}>
       {loading
         ? [...Array(AppConfig.ITEMS_PER_PAGE)].map((_, index) => <OneBlockCardSkeleton key={index} />)
         : tvShows &&

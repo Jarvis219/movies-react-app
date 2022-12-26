@@ -10,12 +10,13 @@ const LayerCard = lazy(() => import('~/components/cards/LayerCard'))
 interface IPeopleProps {
   loading: boolean
   people: IPeople[]
+  listLayout: boolean
 }
 
-const People = ({ loading, people }: IPeopleProps) => {
+const People = ({ loading, people, listLayout }: IPeopleProps) => {
   if (!people.length && !loading) return <BoxEmptyData />
   return (
-    <GridLayout className='xl:!grid-cols-3 2xl:!grid-cols-4'>
+    <GridLayout className={!listLayout ? 'xl:!grid-cols-3 2xl:!grid-cols-4' : ''} listLayout={listLayout}>
       {loading
         ? [...Array(AppConfig.ITEMS_PER_PAGE)].map((_, index) => <OneBlockCardSkeleton key={index} />)
         : people &&
